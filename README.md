@@ -1,6 +1,6 @@
 # Afflicted
 
-Afflicted is an enemy spell timer mod for PvP (mainly arenas). Supported clients: **TBC Anniversary (BCC)** (use `Afflicted-BCC.toc`), WotLK Classic, and retail. When running the TBC Anniversary client, the game loads `Afflicted-BCC.toc` automatically.
+Afflicted is an enemy spell timer mod for PvP (mainly arenas). **Currently supported only for TBC Anniversary (BCC).** The game loads `Afflicted-BCC.toc` when running the TBC Anniversary client.
 
 This addon is for players who want useful information such as when an interrupt is on cooldown and you're safe to cast a heal, or when Blessing of Freedom will be back up on an enemy Paladin. New timers for abilities not included by default can be added in the configuration. The system is flexible enough to track any enemy timer, including traps and totems.
 
@@ -13,9 +13,7 @@ Alerts for when a spell is triggered (or ends), and when you interrupt or dispel
 ## Installation
 
 1. **Download** the addon (clone this repo or download and extract the ZIP).
-2. **Copy the addon folder** into your World of Warcraft addons directory:
-   - **Retail / WotLK Classic:** `World of Warcraft\_classic_era_\Interface\AddOns\` (or your game’s `Interface\AddOns\` path).
-   - **TBC Anniversary (BCC):** Use the same `Interface\AddOns\` folder for your BCC client.
+2. **Copy the addon folder** into your TBC Anniversary (BCC) game directory: `Interface\AddOns\` (e.g. inside your BCC game install folder).
 3. Ensure the folder name is **Afflicted** (e.g. if you downloaded as `afflicted-anniversary`, rename it to `Afflicted`).
 4. Restart the game or log out and back in. The addon should appear in the AddOns list on the character select screen.
 5. Enable **Afflicted** in the AddOns list, then enter the world and use `/afflicted ui` to open the options.
@@ -43,7 +41,7 @@ Alerts for when a spell is triggered (or ends), and when you interrupt or dispel
 If you add spells in the code and they don’t appear or get tracked in game:
 
 1. Close the game.
-2. Go to `World of Warcraft\_classic_era_\WTF\Account\<your_account>\SavedVariables` (or the equivalent path for your client).
+2. Go to `WTF\Account\<your_account>\SavedVariables` inside your TBC Anniversary (BCC) game folder.
 3. Delete the Afflicted-related files (e.g. `AfflictedDB.lua` and `AfflictedDB.lua.bak`).
 4. Launch the game again.
 
