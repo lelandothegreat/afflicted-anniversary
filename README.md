@@ -1,55 +1,50 @@
-# Afflicted-TBC and WOTLK-Classic
+# Afflicted
 
-Afflicted is an enemy spell timer mod for PvP (mainly arenas). Supported clients: **TBC Anniversary (BCC)** (use `Afflicted-BCC.toc`), WotLK Classic, and retail. When running the TBC Anniversary client, the game loads `Afflicted-BCC.toc` automatically. This is for people who just want useful information, such as an interrupt is on cool down and you're safe to cast a heal or that Blessing of Freedom is going to be back up for an enemy Paladin soon. If you want to know the cool down of an obscure ability say Whirlwind then this is not the mod for you. New timers for abilities that are not included by default can easily be added under the configuration. The system is flexible enough that any enemy timer can be added including traps or totems.
+Afflicted is an enemy spell timer mod for PvP (mainly arenas). Supported clients: **TBC Anniversary (BCC)** (use `Afflicted-BCC.toc`), WotLK Classic, and retail. When running the TBC Anniversary client, the game loads `Afflicted-BCC.toc` automatically.
 
-Alerts for when a spell is triggered (or ends), as well as when you interrupt or dispel an enemy are included. All alerts can be shown inside party, raid, raid warning, combat text or a specified chat frame.
+This addon is for players who want useful information such as when an interrupt is on cooldown and you're safe to cast a heal, or when Blessing of Freedom will be back up on an enemy Paladin. New timers for abilities not included by default can be added in the configuration. The system is flexible enough to track any enemy timer, including traps and totems.
 
-Slash command: /afflicted ui
+Alerts for when a spell is triggered (or ends), and when you interrupt or dispel an enemy, are included. Alerts can be shown in party, raid, raid warning, combat text, or a specified chat frame.
 
+**Slash command:** `/afflicted ui`
 
-Thanks Xyz for all the help to fix this addon !
+---
 
+## Installation
 
-# Original version
-https://www.curseforge.com/wow/addons/afflicted3
+1. **Download** the addon (clone this repo or download and extract the ZIP).
+2. **Copy the addon folder** into your World of Warcraft addons directory:
+   - **Retail / WotLK Classic:** `World of Warcraft\_classic_era_\Interface\AddOns\` (or your game’s `Interface\AddOns\` path).
+   - **TBC Anniversary (BCC):** Use the same `Interface\AddOns\` folder for your BCC client.
+3. Ensure the folder name is **Afflicted** (e.g. if you downloaded as `afflicted-anniversary`, rename it to `Afflicted`).
+4. Restart the game or log out and back in. The addon should appear in the AddOns list on the character select screen.
+5. Enable **Afflicted** in the AddOns list, then enter the world and use `/afflicted ui` to open the options.
 
-# Know Bug
-There is a weird bug when you add some spells in the code, they doesn't appear ingame and are not tracked.
-So you need to :
-- close the game and go into : World of Warcraftclassic\WTF\Account\"account_number"\SavedVariables
-- Delete all Afflicted files.
-- Launch the game.
-Then the new spells will appear. But it will reset the addon, so remove your settings unfort...
+---
 
-# Features
-- Tracks CD and Buff Timers
-- Tracks Totems timers also, which show timers of totems and show the tick of some totems (Tremor, fire totems...)
-- Icons and Bars mode
-- Announce what spell is used and when it's up
-- You can sort all your tracks Spells/CD on 6 Anchors : Damage, Defensive, Interrupts, Cooldowns, Spells, Buffs.
-![image](https://user-images.githubusercontent.com/85767653/158212715-d7aac821-2403-4a57-8083-d70abd11f61e.png)
+## Features
 
-![image](https://user-images.githubusercontent.com/85767653/158212807-d702611f-a3ee-4e42-9fd7-31ad74be878e.png)
+- Tracks cooldown and buff timers on enemies
+- Tracks totem timers (including ticks for Tremor, fire totems, etc.)
+- Icons and bars display modes
+- Announcements for when spells are used and when they’re back up
+- Six anchors to organize spells: Damage, Defensive, Interrupts, Cooldowns, Spells, Buffs
 
-![image](https://user-images.githubusercontent.com/85767653/158213771-5ec98e8c-90f5-4b87-927f-6f15f1cd00a0.png)
+![Bars view](https://user-images.githubusercontent.com/85767653/158212715-d7aac821-2403-4a57-8083-d70abd11f61e.png)
 
+![Icons view](https://user-images.githubusercontent.com/85767653/158212807-d702611f-a3ee-4e42-9fd7-31ad74be878e.png)
 
-# how to install
-Download the file and extract it. rename the folder and delete -master
+![Configuration](https://user-images.githubusercontent.com/85767653/158213771-5ec98e8c-90f5-4b87-927f-6f15f1cd00a0.png)
 
+---
 
-# For more addons and such questions 
-You can find me on Silent Shadow discord, on addons/macros/weak aura channels.
-https://discord.gg/MCmBDx3MmC
+## Known bug
 
- 
-# See also 
-The list of the addons i have modified :
-https://github.com/Macumbatbc/My-Addons-list
+If you add spells in the code and they don’t appear or get tracked in game:
 
- 
-# Support
+1. Close the game.
+2. Go to `World of Warcraft\_classic_era_\WTF\Account\<your_account>\SavedVariables` (or the equivalent path for your client).
+3. Delete the Afflicted-related files (e.g. `AfflictedDB.lua` and `AfflictedDB.lua.bak`).
+4. Launch the game again.
 
-https://www.paypal.me/macumbafeh
-
-All support is appreciated
+The new spells should then appear. This resets the addon’s saved settings.
