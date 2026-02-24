@@ -1,48 +1,79 @@
 # Afflicted
 
-Afflicted is an enemy spell timer mod for PvP (mainly arenas). **Currently supported only for TBC Anniversary (BCC).** The game loads `Afflicted-BCC.toc` when running the TBC Anniversary client.
+> Enemy spell and cooldown tracker for PvP. Built for **World of Warcraft: The Burning Crusade Anniversary** (BCC).
 
-This addon is for players who want useful information such as when an interrupt is on cooldown and you're safe to cast a heal, or when Blessing of Freedom will be back up on an enemy Paladin. New timers for abilities not included by default can be added in the configuration. The system is flexible enough to track any enemy timer, including traps and totems.
+Track enemy interrupts, defensives, and key cooldowns in arenas and battlegrounds. See when spells are used, when they expire, and when they’re back up—so you know when it’s safe to cast or when to hold.
 
-Alerts for when a spell is triggered (or ends), and when you interrupt or dispel an enemy, are included. Alerts can be shown in party, raid, raid warning, combat text, or a specified chat frame.
+| | |
+|---|---|
+| **Game** | WoW TBC Anniversary (BCC) |
+| **Open UI** | `/afflicted ui` |
+| **Original** | [Afflicted 3 on CurseForge](https://www.curseforge.com/wow/addons/afflicted3) |
 
-**Slash command:** `/afflicted ui`
+---
+
+## Contents
+
+- [Installation](#installation)
+- [Features](#features)
+- [Configuration](#configuration)
+- [Troubleshooting](#troubleshooting)
 
 ---
 
 ## Installation
 
-1. **Download** the addon (clone this repo or download and extract the ZIP).
-2. **Copy the addon folder** into your TBC Anniversary (BCC) game directory: `Interface\AddOns\` (e.g. inside your BCC game install folder).
-3. Ensure the folder name is **Afflicted** (e.g. if you downloaded as `afflicted-anniversary`, rename it to `Afflicted`).
-4. Restart the game or log out and back in. The addon should appear in the AddOns list on the character select screen.
-5. Enable **Afflicted** in the AddOns list, then enter the world and use `/afflicted ui` to open the options.
+1. Download the addon (clone the repo or download the ZIP and extract it).
+2. Put the addon folder into your TBC Anniversary **AddOns** folder:
+   ```
+   <TBC Anniversary install>\Interface\AddOns\
+   ```
+   The folder inside `AddOns` must be named **Afflicted** (rename it if you got e.g. `afflicted-anniversary`).
+3. At the character select screen, open **AddOns** and enable **Afflicted**.
+4. Enter the world and run `/afflicted ui` to open settings.
 
 ---
 
 ## Features
 
-- Tracks cooldown and buff timers on enemies
-- Tracks totem timers (including ticks for Tremor, fire totems, etc.)
-- Icons and bars display modes
-- Announcements for when spells are used and when they’re back up
-- Six anchors to organize spells: Damage, Defensive, Interrupts, Cooldowns, Spells, Buffs
-
-![Bars view](https://user-images.githubusercontent.com/85767653/158212715-d7aac821-2403-4a57-8083-d70abd11f61e.png)
-
-![Icons view](https://user-images.githubusercontent.com/85767653/158212807-d702611f-a3ee-4e42-9fd7-31ad74be878e.png)
-
-![Configuration](https://user-images.githubusercontent.com/85767653/158213771-5ec98e8c-90f5-4b87-927f-6f15f1cd00a0.png)
+- **Enemy timers** — Cooldowns and buff durations on your current target (or all hostile units).
+- **Totem tracking** — Timers and tick indicators for totems (e.g. Tremor, fire totems).
+- **Two display modes** — Bars or icons; choose per anchor.
+- **Announcements** — Optional messages when spells are used or expire (party, raid, raid warning, combat text, or a chat frame).
+- **Six anchors** — Organize timers by category: **Damage**, **Defensive**, **Interrupts**, **Cooldowns**, **Spells**, **Buffs**. Drag and lock anchors in-game.
+- **Extensible** — Add custom spells and timers via the in-game config.
 
 ---
 
-## Known bug
+## Configuration
 
-If you add spells in the code and they don’t appear or get tracked in game:
+- Open the options with:
+  ```
+  /afflicted ui
+  ```
+- From the config you can change display type (bars/icons), anchors, announcements, and add or edit tracked spells.
 
-1. Close the game.
-2. Go to `WTF\Account\<your_account>\SavedVariables` inside your TBC Anniversary (BCC) game folder.
-3. Delete the Afflicted-related files (e.g. `AfflictedDB.lua` and `AfflictedDB.lua.bak`).
-4. Launch the game again.
+---
 
-The new spells should then appear. This resets the addon’s saved settings.
+## Troubleshooting
+
+**New or custom spells don’t show or track**
+
+The addon can cache spell data. To force a refresh:
+
+1. Exit the game completely.
+2. In your TBC Anniversary install, go to:
+   ```
+   WTF\Account\<your_account>\SavedVariables
+   ```
+3. Delete the Afflicted save files (e.g. `AfflictedDB.lua` and `AfflictedDB.lua.bak`).
+4. Start the game again and enable Afflicted.
+
+Your addon settings will be reset; reconfigure as needed.
+
+---
+
+## Credits
+
+This version is adapted for TBC Anniversary from the original **Afflicted 3** by Shadowed:  
+[https://www.curseforge.com/wow/addons/afflicted3](https://www.curseforge.com/wow/addons/afflicted3)
