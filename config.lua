@@ -506,7 +506,7 @@ local function createAnchorConfiguration(index, anchor)
 	return {
 		order = 1,
 		type = "group",
-		name = anchor.text,
+		name = anchor.text or L["Anchor"],
 		set = setAnchor,
 		get = getAnchor,
 		arg = index,
