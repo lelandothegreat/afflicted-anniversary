@@ -506,7 +506,8 @@ local function createAnchorConfiguration(index, anchor)
 	return {
 		order = 1,
 		type = "group",
-		name = anchor.text or L["Anchor"],
+		-- Ensure name is always a non-nil string to satisfy AceConfig
+		name = anchor.text or (L and L["Anchor"] or ("Anchor " .. tostring(index))),
 		set = setAnchor,
 		get = getAnchor,
 		arg = index,
@@ -845,9 +846,9 @@ local function loadOptions()
 				name = L["Enable inside"],
 				values = {
 					["none"] = L["Everywhere else"],
-					["pvp"] = L["Battlegrounds"],
-					--["arena"] = L["Arenas"],
-					["raid"] = L["Raid instances"],
+				["pvp"] = L["Battlegrounds"],
+				["arena"] = L["Arenas"],
+				["raid"] = L["Raid instances"],
 					["party"] = L["Party instances"]
 				},
 				set = function(info, value, state)

@@ -145,6 +145,9 @@ function Afflicted:OnInitialize()
 				oldSpell.cooldown = spell.cooldown
 				oldSpell.type = spell.type
 				oldSpell.class = spell.class
+				oldSpell.cdAnchor = spell.cdAnchor
+				oldSpell.cdDisabled = spell.cdDisabled
+				oldSpell.disabled = spell.disabled
 				
 				if(not oldSpell.anchor) then
 					oldSpell.anchor = spell.anchor
@@ -217,7 +220,7 @@ local COMBATLOG_FILTER_HOSTILE_PLAYERS = COMBATLOG_FILTER_HOSTILE_PLAYERS
 local COMBATLOG_FILTER_MINE = COMBATLOG_FILTER_MINE
 local COMBATLOG_FILTER_HOSTILE_PLAYERS = COMBATLOG_FILTER_HOSTILE_PLAYERS
 
-local eventRegistered = {SPELL_AURA_APPLIED = true, SPELL_CAST_SUCCESS = true, SPELL_CREATE = true, SPELL_SUMMON = true, SPELL_AURA_REMOVED = true, PARTY_KILL = true, UNIT_DIED = true, SWING_DAMAGE = true, SPELL_DAMAGE = true, SPELL_PERIODIC_DAMAGE = true, SPELL_ENERGIZE = true, UNIT_DESTROYED = true}
+local eventRegistered = {SPELL_AURA_APPLIED = true, SPELL_CAST_SUCCESS = true, SPELL_MISSED = true, SPELL_CREATE = true, SPELL_SUMMON = true, SPELL_AURA_REMOVED = true, PARTY_KILL = true, UNIT_DIED = true, SWING_DAMAGE = true, SPELL_DAMAGE = true, SPELL_PERIODIC_DAMAGE = true, SPELL_ENERGIZE = true, UNIT_DESTROYED = true}
 
 function Afflicted:COMBAT_LOG_EVENT_UNFILTERED(event)
 	local _, eventType, _, sourceGUID, sourceName, sourceFlags, _, destGUID, destName, destFlags, _, spellID, spellName, _, auraType = CombatLogGetCurrentEventInfo()
@@ -250,6 +253,13 @@ function Afflicted:COMBAT_LOG_EVENT_UNFILTERED(event)
 		end
 		
 		self:AbilityTriggered(sourceGUID, sourceName, spell, spellID, spellName)
+
+	-- Spell missed/dodged/resisted — cooldown still starts
+	elseif (eventType == "SPELL_MISSED" and (not self.db.profile.hostileOnly or sourceEnemy)) then
+		local spell = self:GetSpell(spellID, spellName)
+		if( spell and spell.cdAnchor and not spell.cdDisabled and spell.cooldown > 0 ) then
+			self:AbilityTriggered(sourceGUID, sourceName, spell, spellID, spellName)
+		end
 		
 	-- Check for something being summoned (Pets, totems)
 	elseif (eventType == "SPELL_SUMMON" and (not self.db.profile.hostileOnly or sourceEnemy)) then
@@ -511,7 +521,7 @@ function Afflicted:ZONE_CHANGED_NEW_AREA()
 			if( type == "arena" ) then
 				self:SaveArenaBracket()
 				if( not arenaBracket ) then
-					self:RegisterEvent("UPDATE_BATTLEFIELD_STATUS")
+					self.frame:RegisterEvent("UPDATE_BATTLEFIELD_STATUS")
 				end
 			end
 			
